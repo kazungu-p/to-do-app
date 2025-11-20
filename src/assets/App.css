@@ -43,3 +43,10 @@ form button{
 .container ul{
     margin-left: 12%;
 }
+
+@media screen and (max-width: 750px){
+    .container{
+        width: 400px;
+        max-height: 80vh;
+    }
+}
