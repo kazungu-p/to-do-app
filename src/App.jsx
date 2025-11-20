@@ -13,11 +13,19 @@ function App() {
   }
   function addItem(event) {
     setItems(prevValue => {
-      return [addedText, ...items]
+      return [addedText, ...prevValue]
     })
 
     setAddedText("");
     event.preventDefault();
+  }
+  
+  function getItems(item, index){
+    return <ToDoItem text={item} key={index} id={index} onDelete={deleteItem}/>
+  }
+
+  function deleteItem(id){
+    setItems(prevValue => prevValue.filter((item, index)=> index !== id))
   }
 
   return (
@@ -32,9 +40,7 @@ function App() {
         </button>
       </form>
       <ul>
-        {items.map(item => (
-          <ToDoItem text={item}/>
-        ))}
+        {items.map(getItems)}
       </ul>
     </div>
   )
